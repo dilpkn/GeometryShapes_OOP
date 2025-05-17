@@ -19,4 +19,11 @@ public class Rectangle extends Shape {
         return (a + b) * 2;
     }
 
+    public double getA() {
+        return a;
+    }
+
+    public double getB() {
+        return b;
+    }
 }

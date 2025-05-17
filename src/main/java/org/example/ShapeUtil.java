@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class ShapeUtil {
@@ -54,5 +55,21 @@ public class ShapeUtil {
 
     double calculatePerimeter(Shape shape) {
         return shape.calculatePerimeter();
+    }
+
+    public List<Shape> findEquals(List<Shape> allShapes, Shape shapeToCompare){
+        for(Shape shape : allShapes){
+            if(shape.getClass().equals(shapeToCompare.getClass())){
+                ShapeUtil shapeUtil = new ShapeUtil();
+                if(shapeUtil.calculatePerimeter(shape) == shapeUtil.calculatePerimeter(shapeToCompare)){
+                    if(shapeUtil.calculateArea(shape) == shapeUtil.calculateArea(shapeToCompare)){
+                        System.out.println("Такая фигура уже есть ");
+                    }else {
+                        allShapes.add(shapeToCompare);
+                    }
+                }
+            }
+        }
+        return allShapes;
     }
 }
